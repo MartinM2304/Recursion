@@ -1,14 +1,14 @@
+package lesson2;
 
 public class Ex2 {
-
+	
 	public static void main(String[] args) {
-		method (456);
+		System.out.println(dec2Bin(11));
+		
+		}
+	public static String dec2Bin ( int value ) {
+		if (value ==0)return "";
+		return dec2Bin((int)Math.floor(value/2)) + value%2;
 	}
-	public static void method(int n) {
-	   	 while(n!=0) {
-	   		 System.out.print(n%10);
-	   		 n/=10;
-	   	 }
-	 }
 
 }

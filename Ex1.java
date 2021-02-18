@@ -1,21 +1,18 @@
+package lesson2;
 
 public class Ex1 {
-
+	
 	public static void main(String[] args) {
-		
-		 System.out.println("Sum is " + method(5));
-	   	 
-
+	System.out.println(Odd(2)); 
 	}
 	
-		public static int method(int n) {
-		
-		int sum = 0;
-		for(int i = 1; i <= n; i++) {
-			sum+=i;
-		}
-		return sum;
+	public static boolean Odd(int n) {
+	if(n == 1 || n == 0) return n==1;
+	return Odd(n-2);
 	}
 
+	public static boolean Even(int n) {
+	return !Odd(n);
+	}
 
-}
+	}
