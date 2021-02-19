@@ -8,8 +8,10 @@ public class ex3_4 {
 
 	}
 	public static double Array(int index,int n[], int result){
-		if (n.length-1==index)
-		return 0;
+		if (n.length==index)
+		return Double.valueOf(result)/n.length;
+		
+		return Array(index+1, n, result + n[index]);
 		
 	}
 
