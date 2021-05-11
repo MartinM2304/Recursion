@@ -1,76 +1,42 @@
-package theme12;
+package lesson11;
 
-import java.util.HashSet;
+import java.util.Scanner;
 
-public class zad1 {
-
+public class zad1{
+	
 	public static void main(String[] args) {
-		int[] arr = { 1, 3, 4, 8 };
-		int sum = 6;
-		System.out.println(pairs2(arr, sum));
-	}
-
-	static boolean pairs1(int[] list, int sum) {
-		for (int i = 0; i < list.length; i++) {
-			for (int j = i + 1; j < list.length; j++) {
-				if (list[i] + list[j] == sum) {
-					return true;
-				}
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the fist string: ");
+		String s1 = sc.nextLine();
+		System.out.println("Enter the second string: ");
+		String s2 = sc.nextLine();
+		
+		int index = -1;
+		int count = 0;
+		
+		for(int i = 0; i < s1.length(); i++) {
+			if(s1.charAt(i) == s2.charAt(0) && count == 0) {
+				index = i;
+				count++;
+			}else if(s1.charAt(i) == s2.charAt(count)) {
+				count++;
+			}else if(count != 0) {
+				count = 0;
+				index = -1;
+				i--;
 			}
+			if(count == s2.length())
+				break;
 		}
-		return false;
-	}
-
-	static boolean pairs2(int[] list, int sum) {
-		for (int i = 0; i < list.length; i++) {
-			int a = binarySearch(list, sum - list[i]);
-			if (a > -1 && a != i) {
-				return true;
-			}
+		if(count != s2.length()) {
+			index = -1;
+			count = 0;
 		}
-		return false;
-	}
-
-	static boolean pairs3(int[] list, int sum) {
-		int min = 0;
-		int max = list.length - 1;
-		while (min < max) {
-			if (list[min] + list[max] == sum) {
-				return true;
-			} else if (list[min] + list[max] > sum) {
-				max--;
-			} else {
-				min++;
-			}
+		if (index > -1) {
+			System.out.println("Matched at index: " + index);
+		}else {
+			System.out.println("The first string does not contain the second string");
 		}
-
-		return false;
 	}
-
-	static boolean pairs4(int[] list, int sum) {
-		HashSet<Integer> set = new HashSet<Integer>();
-		for (int i = 0; i < list.length; i++) {
-			if (set.contains(list[i])) {
-				return true;
-			}
-			set.add(sum - list[i]);
-		}
-		return false;
-	}
-
-	public static int binarySearch(int[] list, int key) {
-		int low = 0;
-		int high = list.length - 1;
-		while (high >= low) {
-			int mid = (low + high) / 2;
-			if (key < list[mid])
-				high = mid - 1;
-			else if (key == list[mid])
-				return mid;
-			else
-				low = mid + 1;
-		}
-		return -1;
-	}
-
 }
